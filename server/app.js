@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 app.use(parser.json());
 
 
-app.post("/", function() {console.log("POST REQUEST RECEIVED");});
+//post("/", function() {console.log("POST REQUEST RECEIVED");});
 // Set up our routes
 app.use("/classes", router);
 
@@ -33,3 +33,10 @@ if (!module.parent) {
   console.log("Listening on", app.get("port"));
 }
 
+// DATABASE interactions
+db.connection.connect();
+db.connection.query('INSERT INTO messages (messageText, messageID) VALUES (\'HELLO\', 535)');
+db.connection.query('INSERT INTO messages (messageText, messageID) VALUES (\'Goodbye\', 777)');
+db.connection.query('DELETE FROM messages WHERE messageID=535');
+
+db.connection.end();

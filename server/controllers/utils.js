@@ -7,22 +7,24 @@ var headers = {
 };
 
 exports.sendResponse = function(response, data, statusCode){
+        console.log("HERE IS INSIDE SEND RESPONSE:  ");
+
   statusCode = statusCode || 200;
   response.writeHead(statusCode, headers);
   response.end(JSON.stringify(data));
 };
 
-exports.collectData = function(request, callback){
-        console.log("Are we in utils");
+// exports.collectData = function(request, callback){
+//         console.log("Are we in utils");
 
-  var data = "";
+//   var data = "";
 
-  // DOES NOT WORK with request.on
-  request.on('data', function(chunk){
+//   // DOES NOT WORK with request.on
+//   request.on('data', function(chunk){
 
-    data += chunk;
-  });
-  request.on('end', function(){
-    callback(JSON.parse(data));
-  });
-};
+//     data += chunk;
+//   });
+//   request.on('end', function(){
+//     callback(JSON.parse(data));
+//   });
+// };
