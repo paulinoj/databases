@@ -1,5 +1,6 @@
 var express = require('express');
-var db = require('./db');
+//var db = require('./db');
+
 
 // Middleware
 var morgan = require('morgan');
@@ -33,10 +34,3 @@ if (!module.parent) {
   console.log("Listening on", app.get("port"));
 }
 
-// DATABASE interactions
-db.connection.connect();
-db.connection.query('INSERT INTO messages (messageText, messageID) VALUES (\'HELLO\', 535)');
-db.connection.query('INSERT INTO messages (messageText, messageID) VALUES (\'Goodbye\', 777)');
-db.connection.query('DELETE FROM messages WHERE messageID=535');
-
-db.connection.end();
